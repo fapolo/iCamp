@@ -1,32 +1,52 @@
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
+const express    = require("express"),
+      app        = express(),
+      bodyParser = require("body-parser"),
+      mongoose   = require("mongoose");
 
+mongoose.connect("mongodb://localhost:27017/icamp", { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//SCHEMA PARA O DB
+const acampamentoSchema = new mongoose.Schema({
+    name: String,
+    img: String
+})
 
-//ARRAY PLACEHOLDER PARA DB DE TESTE
-const acampamentos = [
-    { name: "Parque da Cachoeira", img: "http://ondeacampar.com.br/wp-content/uploads/Parque-da-Cachoeira-Canela-4.jpg" },
-    { name: "Cachoeira dos Borges", img: "http://ondeacampar.com.br/wp-content/uploads/Camping-e-Parque-Cachoeira-dos-Borges-8.jpg" },
-    { name: "Praia das Pombas", img: "http://ondeacampar.com.br/wp-content/uploads/Camping-Praia-das-Pombas-16.jpg" },
-    { name: "Parque do Sesi", img: "http://ondeacampar.com.br/wp-content/uploads/Parque-do-Sesi-11.jpg" }
-]
+const Acampamento = mongoose.model("Acampamento", acampamentoSchema);
 
+//ROTAS
 app.get("/", (req, res) => {
     res.render("index");
 });
 
 app.get("/acampamentos", (req, res) => {
-    res.render("acampamentos", {acampamentos: acampamentos});
+    Acampamento.find({}, (err, camps) => {
+        if (err) {
+            console.log(err);
+            res.redirect("/");
+        } else {
+            res.render("acampamentos", {acampamentos: camps} );
+        }
+    })
 })
 
 app.post("/acampamentos", (req, res) => {
-    const newCamp = {name: req.body.name, img: req.body.img}
-    acampamentos.push(newCamp);
-    res.redirect("/acampamentos");
+    const name = req.body.name;
+    const img = req.body.img;
+    const newCamp = {name: name, img: img};
+    Acampamento.create(newCamp, (err, newCamp) => {
+        if (err) {
+            console.log("ERRO AO ADICIONAR ACAMPAMENTO");
+            console.log(err);
+            console.log("-> Acampamento que foi tentando adicionar:");
+            console.log(newCamp);
+            res.redirect("/acampamentos");
+        } else {
+            res.redirect("/acampamentos");
+        }
+    })
 });
 
 app.get("/acampamentos/novo", (req,res) => {
