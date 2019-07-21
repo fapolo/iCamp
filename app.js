@@ -3,21 +3,21 @@ const express    = require("express"),
       bodyParser = require("body-parser"),
       mongoose   = require("mongoose");
 
+const Acampamento = require("./models/acampamento"),
+      Comentario  = require("./models/comentario");
+
+const seedDB = require("./seeds");
+
 mongoose.connect("mongodb://localhost:27017/icamp", { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//SCHEMA PARA O DB
-const acampamentoSchema = new mongoose.Schema({
-    name: String,
-    img: String,
-    desc: String
-})
+seedDB();
 
-const Acampamento = mongoose.model("Acampamento", acampamentoSchema);
-
-//ROTAS
+// ==================
+// ROTAS
+// ==================
 app.get("/", (req, res) => {
     res.render("index");
 });
@@ -28,7 +28,7 @@ app.get("/acampamentos", (req, res) => {
             console.log(err);
             res.redirect("/");
         } else {
-            res.render("acampamentos", {acampamentos: camps} );
+            res.render("acampamentos/acampamentos", {acampamentos: camps} );
         }
     })
 })
@@ -52,16 +52,54 @@ app.post("/acampamentos", (req, res) => {
 });
 
 app.get("/acampamentos/novo", (req, res) => {
-    res.render("novo");
+    res.render("acampamentos/novo");
 })
 
 app.get("/acampamentos/:id", (req, res) => {
-    Acampamento.findById(req.params.id, (err, camp) => {
+    Acampamento.findById(req.params.id).populate("comments").exec((err, camp) => {
         if (err) {
             console.log("Erro na busca de um acampamento:")
             console.log(err);
+            res.redirect("/acampamentos");
         } else {
-            res.render("show", {acampamento: camp} );
+            res.render("acampamentos/show", {acampamento: camp} );
+        }
+    })
+})
+
+// ==================
+// ROTAS COMENTARIOS
+// ==================
+
+app.get("/acampamentos/:id/comentarios/novo", (req, res) => {
+    Acampamento.findById(req.params.id, (err, camp) => {
+        if (err) {
+            console.log("Erro na busca de um acampamento para comentário:");
+            console.log(err);
+            res.redirect("/acampamentos");
+        } else {
+            res.render("comentarios/novo", {acampamento:camp});
+        }
+    })
+})
+
+app.post("/acampamentos/:id/comentarios", (req, res) => {
+    Acampamento.findById(req.params.id, (err, camp) => {
+        if (err) {
+            console.log("Erro ao buscar acampamento para adicionar comentário:");
+            console.log(err);
+        } else {
+            Comentario.create(req.body.comment, (err, newComment) => {
+                if (err) {
+                    console.log("Erro salvar novo comentário no DB:");
+                    console.log(err);
+                    res.redirect("/acampamentos");
+                } else {
+                    camp.comments.push(newComment);
+                    camp.save();
+                    res.redirect("/acampamentos/" + camp._id);
+                }
+            })
         }
     })
 })

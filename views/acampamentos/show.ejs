@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div class="page-container">
+    <h1 class="page-title"><%= acampamento.name %></h1>
+    <a href="/acampamentos" class="btn btn-basic">Voltar</a>
+</div>
+<div class="hero">
+    <img class="hero-img" src="<%= acampamento.img %>" alt="<%= acampamento.name %>">
+    <div class="hero-details">
+        <p class="hero-details__desc"><%= acampamento.desc %></p>
+    </div>
+</div>
+
+<div class="comments">
+    <a href="/acampamentos/<%= acampamento._id %>/comentarios/novo" class="btn-simple">Deixe seu comentário</a>
+    <% acampamento.comments.forEach((comment) => { %>
+        <div class="comment">
+            <h3 class="comment__author"><%= comment.author %></h3>
+            <p class="comment__text"><%= comment.text %></p>
+        </div>
+    <% }); %>
+</div>
+
+
+<% include ../partials/footer %>

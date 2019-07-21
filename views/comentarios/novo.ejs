@@ -1,0 +1,15 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div class="page-container">
+        <h1 class="page-title">Adicionar Comentário - <%=acampamento.name %></h1>
+        <a href="/acampamentos" class="btn btn-basic">Voltar</a>
+    </div>
+    
+    <form class="form" action="/acampamentos/<%= acampamento._id %>/comentarios" method="POST">
+        <input type="text" placeholder="Autor" name="comment[author]" class="input__text">
+        <textarea placeholder="Comentário" name="comment[text]" cols="30" rows="10" class="input__text"></textarea>
+        <button class="btn btn-basic">Enviar</button>
+    </form>
+
+<% include ../partials/footer %>
