@@ -10,10 +10,12 @@
 
 <div class="camp-grid">
     <% acampamentos.forEach((camp) => { %>
-        <div class="camping">
-            <img class="camping__image" src="<%= camp.img %>" alt="<%= camp.name %>">
-            <h3 class="camping__name"><%= camp.name %></h3>
-        </div>
+        <a href="/acampamentos/<%= camp._id %>" class="camp-link">
+            <div class="camping">
+                <img class="camping__image" src="<%= camp.img %>" alt="<%= camp.name %>">
+                <h3 href="/acampamentos/<%= camp._id %>" class="camping__name"><%= camp.name %></h3>
+            </div>
+        </h3>
     <% }); %>
 </div>
 
