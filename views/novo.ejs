@@ -1,0 +1,17 @@
+<% include partials/header %>
+<% include partials/navbar %>
+
+
+<div class="page-container">
+    <h1 class="page-title">Adicionar Acampamento</h1>
+    <a href="/acampamentos" class="btn btn-basic">Voltar</a>
+
+</div>
+
+<form class="form" action="/acampamentos" method="POST">
+    <input type="text" placeholder="Nome do acampamento" name="name" class="input__text">
+    <input type="text" placeholder="Link para Imagem" name="img" class="input__text">
+    <button class="btn btn-basic">Enviar</button>
+</form>
+
+<% include partials/footer %>
