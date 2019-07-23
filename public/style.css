@@ -10,7 +10,7 @@
 
 body {
     font-family: "Lato", sans-serif;
-    font-size: 10px;
+    font-size: 62,5%;
     color: rgb(82, 82, 82);
 }
 
@@ -47,7 +47,7 @@ body {
 
 .nav {
     width: 100vw;
-    height: 5vh;
+    height:7vh;
     padding: 0 10rem;
     display: flex;
     align-items: center;
@@ -59,13 +59,13 @@ body {
     margin: 0 1rem;
     text-decoration: none;
     cursor: pointer;
-    font-size: 1.6em;
+    font-size: 1em;
     color: inherit;
     transition: all 0.2s;
 }
 
 .nav-logo {
-    font-size: 2em;
+    font-size: 1.3em;
     font-weight: bold;
     text-decoration: none;
     color: inherit;
@@ -83,24 +83,24 @@ body {
 /* ==================== */
 
 .home-title {
-    font-size: 9em;
+    font-size: 4em;
     font-weight: 300;
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
 }
 
 .home-desc {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 300;
     margin: 3.4rem auto;
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
 .page-title {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 .camping__name {
-    font-size: 2em;
+    font-size: 1.2em;
     line-height: 1.5em;
     margin-left: 1rem;
 }
@@ -111,12 +111,12 @@ body {
 }
 
 .comment__author {
-    font-size: 1.6em;
+    font-size: 1.2em;
     line-height: 1.5em;
 }
 
 .comment__text {
-    font-size: 1.4em;
+    font-size: 1em;
     line-height: 1.5em;
 }
 
@@ -131,7 +131,7 @@ body {
     border-radius: 0.7rem;
     text-decoration: none;
     font-family: inherit;
-    font-size: 1.6em;
+    font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
@@ -161,7 +161,7 @@ body {
 
 
 .btn-basic {
-    font-size: 1.3em;
+    font-size: 1em;
     margin-top: 2rem;
     background-color: rgb(56, 172, 56);
     color: white;
@@ -178,7 +178,7 @@ body {
 .btn-simple {
     text-decoration: none;
     cursor: pointer;
-    font-size: 1.4em;
+    font-size: 1em;
     color: inherit;
     margin-left: 2rem;
     padding: 0.2rem 0.5rem;
@@ -242,7 +242,7 @@ body {
 .input__text {
     width: 100%;
     display: block;
-    font-size: 1.6em;
+    font-size: 1em;
     padding: 1rem 2rem;
     border-radius: 1rem;
     border: 1px solid rgb(82, 82, 82);
@@ -268,7 +268,6 @@ textarea {
 
 .hero {
     width: 100vw;
-    height: 45vh;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
@@ -276,8 +275,8 @@ textarea {
 }
 
 .hero-img {
-    width: 700px;
-    height: 400px;
+    width: 40rem;
+    height: 20rem;
     object-fit: cover;
     padding: 1rem;
     border: 1px solid rgb(82, 82, 82);
@@ -289,7 +288,7 @@ textarea {
 }
 
 .hero-details__desc {
-    font-size: 1.8em;
+    font-size: 1.1em;
     line-height: 1.5em;
 }
 
@@ -311,9 +310,9 @@ textarea {
 
 .footer {
     width: 100vw;
-    height: 10vh;
+    height: 8vh;
     background-color: rgb(61, 61, 61);
-    padding: 3em 7em;
+    padding-right: 7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -321,7 +320,7 @@ textarea {
 
 .footer p {
     text-align: right;
-    font-size: 1.2em;
+    font-size: 0.7em;
     line-height: 1.5em;
     color: white;
 }
