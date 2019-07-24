@@ -1,0 +1,15 @@
+<% include partials/header %>
+<% include partials/navbar %>
+
+<div class="page-container">
+    <h1 class="page-title">Acessar o iCamp</h1>
+</div>
+
+<form class="form" action="/login" method="POST">
+    <input type="email" placeholder="E-mail" name="username" class="input__text" required>
+    <input type="password" placeholder="Senha" name="password" class="input__text" required>
+    <button class="btn btn-basic">Entrar</button>
+    <a href="/registrar" class="btn-simple">Cadastre-se agora!</a>
+</form>
+
+<% include partials/footer %>

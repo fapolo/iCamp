@@ -78,6 +78,11 @@ body {
     color: rgb(0, 140, 255);
 }
 
+.menu__username {
+    color: rgb(0, 140, 255);
+    font-size: 1em;
+}
+
 /* ==================== */
 /* TÍTULOS / TEXTOS */
 /* ==================== */
@@ -111,12 +116,12 @@ body {
 }
 
 .comment__author {
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.5em;
 }
 
 .comment__text {
-    font-size: 1em;
+    font-size: 0.8em;
     line-height: 1.5em;
 }
 
@@ -181,6 +186,7 @@ body {
     font-size: 1em;
     color: inherit;
     margin-left: 2rem;
+    margin-bottom: 1rem;
     padding: 0.2rem 0.5rem;
     border-bottom: 1px solid rgb(0, 140, 255);
     transition: all 0.2s;

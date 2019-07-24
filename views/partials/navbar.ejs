@@ -5,6 +5,14 @@
     <div class="menu">
         <a href="#" class="menu__link">Sobre</a>
         <a href="/acampamentos" class="menu__link">Acampamentos</a>
-        <a href="#" class="menu__link">Login</a>
+        <% if (!currentUser) { %>
+            <a href="/registrar" class="menu__link">Cadastre-se</a>
+            <a href="/login" class="menu__link">Login</a>
+        <% } else { %>
+            <span class="menu__username"><%= currentUser.name %></span>
+            <a href="/logout" class="menu__link">Sair</a>
+        <% }; %>
+        
+        
     </div>
 </nav>
