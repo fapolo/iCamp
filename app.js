@@ -90,6 +90,10 @@ app.get("/acampamentos/:id", (req, res) => {
     })
 });
 
+app.get("/sobre", (req, res) => {
+    res.render("sobre");
+});
+
 // ==================
 // ROTAS COMENTARIOS
 // ==================

@@ -125,6 +125,35 @@ body {
     line-height: 1.5em;
 }
 
+.page-text {
+    width: 70vw;
+    margin: 1rem auto;
+}
+
+.text-block {
+    line-height: 1.5em;
+    margin-bottom: 1rem;
+}
+
+.page-text ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-text ul li {
+    line-height: 1.5em;
+}
+
+.text-link {
+    cursor: pointer;
+    color: inherit;
+    transition: all 0.2s;
+}
+
+.text-link:hover {
+    color: rgb(0, 140, 255);
+}
+
 /* ==================== */
 /* BOTÕES */
 /* ==================== */
