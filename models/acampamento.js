@@ -9,7 +9,14 @@ const acampamentoSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comentario"
         }
-    ]
+    ],
+    user: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Usuario"
+        },
+        name: String
+    }
 })
 
 module.exports = mongoose.model("Acampamento", acampamentoSchema);

@@ -30,25 +30,25 @@ function seedDB() {
             console.log(err);
         } else {
             console.log("=== Acampamentos Removidos por completo ===");
-            console.log("=== Adicionando novos Acampamentos ===");
-            acampamentos.forEach((seed) => {
-                Acampamento.create(seed, (err, newCamp) =>{
-                    if (err) {
-                        console.log("- Erro ao adicionar acampamento: " + newCamp.name);
-                    } else {
-                        Comentario.create(comentario, (err, newComment) => {
-                            if (err) {
-                                console.log("- Erro ao criar novo comentário");
-                            } else {
-                                newCamp.comments.push(newComment);
-                                newCamp.save();
-                                console.log("- " + newCamp.name + " adicionado ao DB.");
-                            }
-                        })
+            // console.log("=== Adicionando novos Acampamentos ===");
+            // acampamentos.forEach((seed) => {
+            //     Acampamento.create(seed, (err, newCamp) =>{
+            //         if (err) {
+            //             console.log("- Erro ao adicionar acampamento: " + newCamp.name);
+            //         } else {
+            //             Comentario.create(comentario, (err, newComment) => {
+            //                 if (err) {
+            //                     console.log("- Erro ao criar novo comentário");
+            //                 } else {
+            //                     newCamp.comments.push(newComment);
+            //                     newCamp.save();
+            //                     console.log("- " + newCamp.name + " adicionado ao DB.");
+            //                 }
+            //             })
                         
-                    }
-                })
-            })
+            //         }
+            //     })
+            // })
         }
     })
 };

@@ -8,6 +8,7 @@
 <div class="hero">
     <img class="hero-img" src="<%= acampamento.img %>" alt="<%= acampamento.name %>">
     <div class="hero-details">
+        <span class="hero-details__creator">Adicionado por: <%= acampamento.user.name %></span>
         <p class="hero-details__desc"><%= acampamento.desc %></p>
     </div>
 </div>
@@ -16,7 +17,7 @@
     <a href="/acampamentos/<%= acampamento._id %>/comentarios/novo" class="btn-simple">Deixe seu comentário</a>
     <% acampamento.comments.forEach((comment) => { %>
         <div class="comment">
-            <h3 class="comment__author"><%= comment.author %></h3>
+            <h3 class="comment__author"><%= comment.author.name %></h3>
             <p class="comment__text"><%= comment.text %></p>
         </div>
     <% }); %>

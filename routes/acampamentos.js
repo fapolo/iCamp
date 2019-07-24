@@ -17,7 +17,8 @@ router.post("/acampamentos", isLoggedIn, (req, res) => {
     const name = req.body.name;
     const img = req.body.img;
     const desc = req.body.desc;
-    const newCamp = {name: name, img: img, desc: desc};
+    const user = {id: req.user._id, name: req.user.name};
+    const newCamp = {name: name, img: img, desc: desc, user: user};
     Acampamento.create(newCamp, (err, newCamp) => {
         if (err) {
             console.log("ERRO AO ADICIONAR ACAMPAMENTO");

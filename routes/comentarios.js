@@ -28,6 +28,9 @@ router.post("/acampamentos/:id/comentarios", isLoggedIn, (req, res) => {
                     console.log(err);
                     res.redirect("/acampamentos");
                 } else {
+                    newComment.author.id = req.user._id;
+                    newComment.author.name = req.user.name;
+                    newComment.save();
                     camp.comments.push(newComment);
                     camp.save();
                     res.redirect("/acampamentos/" + camp._id);

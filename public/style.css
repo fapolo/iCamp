@@ -327,6 +327,11 @@ textarea {
     line-height: 1.5em;
 }
 
+.hero-details__creator {
+    font-size: 0.7em;
+    line-height: 2em;
+}
+
 .comments {
     width: 100vw;
     padding: 2rem 10rem;
