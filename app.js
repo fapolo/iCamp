@@ -2,7 +2,8 @@ const express       = require("express"),
       bodyParser    = require("body-parser"),
       passport      = require("passport"),
       LocalStrategy = require("passport-local"),
-      mongoose      = require("mongoose");
+      mongoose      = require("mongoose"),
+      flash         = require("connect-flash");
 
 const Usuario       = require("./models/usuario");
 
@@ -16,6 +17,7 @@ mongoose.connect("mongodb://localhost:27017/icamp", { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
 // const seedDB = require("./seeds");   
 // seedDB();
@@ -35,6 +37,8 @@ passport.serializeUser(Usuario.serializeUser());
 passport.deserializeUser(Usuario.deserializeUser());
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.flashErr = req.flash("error");
+    res.locals.flashOk = req.flash("success");
     next();
 });
 

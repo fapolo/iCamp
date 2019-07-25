@@ -393,6 +393,26 @@ textarea {
 }
 
 /* ==================== */
+/* FLASH MESSAGES */
+/* ==================== */
+
+.flash-msg-err {
+    background-color: lightcoral;
+    padding: 1rem 10rem;
+    border-bottom: 1px solid darkred;
+    color: white;
+    font-weight: bold;
+}
+
+.flash-msg-ok {
+    background-color: lightseagreen;
+    padding: 1rem 10rem;
+    border-bottom: 1px solid darkgreen;
+    color: white;
+    font-weight: bold;
+}
+
+/* ==================== */
 /* FOOTER */
 /* ==================== */
 

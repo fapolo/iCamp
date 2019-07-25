@@ -13,9 +13,11 @@ router.post("/registrar", (req, res) => {
         if (err) {
             console.log("=== ERRO AO CRIAR NOVO USUARIO ===");
             console.log(err);
+            req.flash("error", "Ocorreu um erro. Tente novamente.");
             res.render("registrar");
         }
         passport.authenticate("local")(req, res, () => {
+            req.flash("success", "Seja bem-vindo ao iCamp!");
             res.redirect("/acampamentos");
         })
     });
@@ -43,6 +45,7 @@ function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     } else {
+        req.flash("error", "Você precisa acessar a sua conta!");
         res.redirect("/login");
     };
 };
