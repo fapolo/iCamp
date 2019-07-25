@@ -87,15 +87,30 @@ router.put("/acampamentos/:id", isLoggedIn, (req, res) => {
 });
 
 router.delete("/acampamentos/:id", (req, res) => {
-    Acampamento.findById(req.params.id).deleteOne( (err) => {
+    Acampamento.findById(req.params.id).populate("comments").exec((err, foundCamp) => {
         if (err) {
-            console.log("=== ERRO AO EXCLUIR ACAMPAMENTO ===");
+            console.log("=== ERRO AO PROCURAR CAMP PARA EXCLUIR ===");
             console.log(err);
             res.redirect("/acampamentos");
-        } else {
+        };
+        foundCamp.comments.forEach((comment) => {
+            Comentario.findById(comment._id).deleteOne( (err) => {
+                if (err) {
+                    console.log("=== Erro excluindo Comment antes de apagar Camp ===");
+                    console.log(err);
+                    res.redirect("/acampamentos");
+                };
+            });
+        });
+        Acampamento.findById(foundCamp._id).deleteOne( (err) => {
+            if (err) {
+                console.log("=== ERRO AO EXCLUIR ACAMPAMENTO ===");
+                console.log(err);
+                res.redirect("/acampamentos");
+            }
             res.redirect("/acampamentos");
-        }
-    })
+        });
+    });
 });
 
 // ==================
