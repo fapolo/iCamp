@@ -169,7 +169,6 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
-    
 }
 
 .btn:hover {
@@ -206,6 +205,36 @@ body {
 }
 
 .btn-basic:visited {
+    color: white;
+}
+
+.btn-edit {
+    font-size: 1em;
+    margin-top: 2rem;
+    background-color: rgb(230, 187, 0);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: rgb(179, 146, 0);
+}
+
+.btn-edit:visited {
+    color: white;
+}
+
+.btn-delete {
+    font-size: 1em;
+    margin-top: 2rem;
+    background-color: rgb(228, 0, 0);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: rgb(167, 0, 0);
+}
+
+.btn-delete:visited {
     color: white;
 }
 
@@ -268,6 +297,10 @@ body {
 /* ==================== */
 /* FORMULARIOS */
 /* ==================== */
+
+.form-delete {
+    display: inline;
+}
 
 .form {
     width: 600px;

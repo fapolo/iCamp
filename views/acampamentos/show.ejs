@@ -15,6 +15,14 @@
 
 <div class="comments">
     <a href="/acampamentos/<%= acampamento._id %>/comentarios/novo" class="btn-simple">Deixe seu comentário</a>
+    <% if (currentUser !== undefined) { %>
+        <% if (currentUser._id.toString() === acampamento.user.id.toString()) { %>
+            <a href="/acampamentos/<%= acampamento._id %>/editar" class="btn btn-edit">Editar</a>
+            <form class="form-delete" action="/acampamentos/<%= acampamento._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-delete">Apagar</button>
+            </form>
+        <% }; %>
+    <% }; %>
     <% acampamento.comments.forEach((comment) => { %>
         <div class="comment">
             <h3 class="comment__author"><%= comment.author.name %></h3>
@@ -22,6 +30,5 @@
         </div>
     <% }); %>
 </div>
-
 
 <% include ../partials/footer %>

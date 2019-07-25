@@ -10,8 +10,6 @@ const commentRoutes = require("./routes/comentarios"),
       campsRoutes   = require("./routes/acampamentos"),
       authRoutes    = require("./routes/autenticacao.js");
 
-const seedDB = require("./seeds");
-
 const app = express();
 
 mongoose.connect("mongodb://localhost:27017/icamp", { useNewUrlParser: true });
@@ -19,7 +17,8 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-seedDB();
+// const seedDB = require("./seeds");   
+// seedDB();
 
 // ==================
 // PASSPORT CONFIG
