@@ -40,6 +40,50 @@ router.post("/acampamentos/:id/comentarios", isLoggedIn, (req, res) => {
     })
 });
 
+router.get("/acampamentos/:idcamp/comentarios/:idcom/editar", isLoggedIn, (req, res) => {
+    Comentario.findById(req.params.idcom, (err, foundComment) => {
+        if (err) {
+            console.log("=== FALHA AO PROCURAR COMENTARIO PARA EDICAO ===");
+            console.log(err);
+            res.redirect("/acampamentos/" + req.body.idcamp);
+        } else {
+            Acampamento.findById(req.params.idcamp, (err, foundCamp) => {
+                if (err) {
+                    console.log("=== Acampamento Não localizado na edição de comentário ===");
+                    console.log(err);
+                    res.redirect("/acampamentos");
+                } else {
+                    res.render("comentarios/edit", {comentario: foundComment, acampamento: foundCamp});
+                }
+            })
+        };
+    });
+});
+
+router.put("/acampamentos/:idcamp/comentarios/:idcom", isLoggedIn, (req, res) => {
+    Comentario.findByIdAndUpdate(req.params.idcom, {text: req.body.text}, (err, comment) => {
+        if (err) {
+            console.log("=== ERRO AO ATUALIZAR COMENTÁRIO ===");
+            console.log(err);
+            res.redirect("/acampamentos/" + req.params.idcamp);
+        } else {
+            res.redirect("/acampamentos/" + req.params.idcamp);
+        }
+    })
+})
+
+router.delete("/acampamentos/:idcamp/comentarios/:idcom", isLoggedIn, (req, res) => {
+    Comentario.findById(req.params.idcom).deleteOne((err) => {
+        if (err) {
+            console.log("=== ERRO AO APAGAR COMENTARIO ===");
+            console.log(err);
+            res.redirect("/acampamentos/" + req.params.idcamp);
+        } else {
+            res.redirect("/acampamentos/" + req.params.idcamp);
+        }
+    })
+})
+
 // ==================
 // MIDDLEWARE
 // ==================
