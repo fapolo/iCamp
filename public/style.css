@@ -81,6 +81,11 @@ body {
 .menu__username {
     color: rgb(0, 140, 255);
     font-size: 1em;
+    margin-left: 1rem;
+}
+
+.menu__dash {
+    font-weight: 300;
 }
 
 /* ==================== */
@@ -396,4 +401,25 @@ textarea {
     font-size: 0.7em;
     line-height: 1.5em;
     color: white;
+}
+
+@media only screen and (max-width: 820px) {
+    .nav {
+        width: 100vw;
+        height:7vh;
+        padding: 0;
+        flex-direction: column;
+    }
+
+    .menu {
+        transform: translateY(-32%);
+    }
+
+    .menu__link {
+        font-size: 0.7em;
+    }
+
+    .menu__dash {
+        font-size: 0.7em;
+    }
 }
