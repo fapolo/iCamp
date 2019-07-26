@@ -18,9 +18,7 @@
     <% if (currentUser !== undefined) { %>
         <% if (currentUser._id.toString() === acampamento.user.id.toString()) { %>
             <a href="/acampamentos/<%= acampamento._id %>/editar" class="btn btn-edit">Editar</a>
-            <form class="form-delete" action="/acampamentos/<%= acampamento._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-delete">Apagar</button>
-            </form>
+            <button class="btn btn-delete" id="delete-button">Apagar</button>
         <% }; %>
     <% }; %>
     <% acampamento.comments.forEach((comment) => { %>
@@ -31,12 +29,20 @@
                 <% if (currentUser._id.toString() === comment.author.id.toString()) { %>
                     <a href="/acampamentos/<%= acampamento._id %>/comentarios/<%= comment._id %>/editar" class="btn-simple">Editar</a>
                     <form class="form-delete" action="/acampamentos/<%= acampamento._id %>/comentarios/<%= comment._id%>?_method=DELETE" method="POST">
-                <button class="btn-simple">Apagar</button>
-            </form>
+                        <button class="btn-simple">Apagar</button>
+                    </form>
                 <% }; %>
             <% }; %>
         </div>
     <% }); %>
 </div>
+<div class="delete-popup" id="delete-popup">
+    <form class="form-delete" action="/acampamentos/<%= acampamento._id %>?_method=DELETE" method="POST">
+        <p><strong>Tem certeza?</strong> Esta ação não pode ser desfeita!</p>
+        <button class="btn btn-delete" id="confirm-delete">APAGAR</button>
+    </form>
+    <span class="btn btn-basic" id="cancel-delete">Cancelar</span>
+</div>
+<div class="delete-em" id="delete-em"></div>
 
 <% include ../partials/footer %>

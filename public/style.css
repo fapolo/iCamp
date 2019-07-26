@@ -12,6 +12,7 @@ body {
     font-family: "Lato", sans-serif;
     font-size: 62,5%;
     color: rgb(82, 82, 82);
+    position: relative;
 }
 
 /* ==================== */
@@ -410,6 +411,54 @@ textarea {
     border-bottom: 1px solid darkgreen;
     color: white;
     font-weight: bold;
+}
+
+/* ==================== */
+/* DELETE POP-UP */
+/* ==================== */
+
+.delete-popup {
+    width: 30vw;
+    margin: 0 auto;
+    background-color: rgb(201, 0, 0);
+    padding: 2rem 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+
+    transform: translate(-50%, -50%);
+}
+
+.delete-popup-show {
+    display: flex;
+}
+
+#confirm-delete {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.delete-em {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.delete-em-show {
+    display: block;
 }
 
 /* ==================== */
