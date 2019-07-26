@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
 
+:root {
+    --text-clr-main: rgb(82, 82, 82);
+
+    --gray-darker: rgb(61, 61, 61);
+
+    --blue-primary: rgb(0, 140, 255);
+    --blue-darker: rgb(0, 108, 197);
+    --blue-lighter: rgb(92, 188, 252);
+
+    --green-primary: rgb(56, 172, 56);
+    --green-darker: rgb(51, 116, 51);
+
+    --yellow-primary: rgb(230, 187, 0);
+    --yellow-darker: rgb(179, 146, 0);
+
+    --red-primary: rgb(228, 0, 0);
+    --red-darker: rgb(167, 0, 0);
+    --red-darker-2: rgb(201, 0, 0);
+
+    --shadow-primary: rgba(0, 0, 0, 0.3);
+    --shadow-secondary: rgba(0, 0, 0, 0.7);
+    --shadow-light: rgba(255, 255, 255, 0.5);
+}
+
 *,
 *::before,
 *::after {
@@ -11,7 +35,7 @@
 body {
     font-family: "Lato", sans-serif;
     font-size: 62,5%;
-    color: rgb(82, 82, 82);
+    color: var(--text-clr-main);
     position: relative;
 }
 
@@ -22,7 +46,7 @@ body {
 .home-container {
     width: 100vw;
     height: 85vh;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--shadow-light);
     background-image: url("https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce");
     background-blend-mode: soft-light;
     background-size: cover;
@@ -53,7 +77,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(82, 82, 82);
+    border-bottom: 1px solid var(--text-clr-main);
 }
 
 .menu__link {
@@ -76,11 +100,11 @@ body {
 
 .menu__link:hover,
 .nav-logo:hover {
-    color: rgb(0, 140, 255);
+    color: var(--blue-primary);
 }
 
 .menu__username {
-    color: rgb(0, 140, 255);
+    color: var(--blue-primary);
     font-size: 1em;
     margin-left: 1rem;
 }
@@ -96,14 +120,14 @@ body {
 .home-title {
     font-size: 4em;
     font-weight: 300;
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 0px 0px 20px var(--shadow-light);
 }
 
 .home-desc {
     font-size: 2em;
     font-weight: 300;
     margin: 3.4rem auto;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0px 0px 20px var(--shadow-primary);
 }
 
 .page-title {
@@ -157,7 +181,7 @@ body {
 }
 
 .text-link:hover {
-    color: rgb(0, 140, 255);
+    color: var(--blue-primary);
 }
 
 /* ==================== */
@@ -183,14 +207,14 @@ body {
 
 
 .btn-main {
-    background-color: rgb(0, 140, 255);
-    border: 1px solid rgb(92, 188, 252);
+    background-color: var(--blue-primary);
+    border: 1px solid var(--blue-lighter);
     color: white;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px var(--shadow-primary);
 }
 
 .btn-main:hover {
-    background-color: rgb(0, 108, 197);
+    background-color: var(--blue-darker);
     transform: scale(1.1);
 }
 
@@ -202,12 +226,12 @@ body {
 .btn-basic {
     font-size: 1em;
     margin-top: 2rem;
-    background-color: rgb(56, 172, 56);
+    background-color: var(--green-primary);
     color: white;
 }
 
 .btn-basic:hover {
-    background-color: rgb(51, 116, 51);
+    background-color: var(--green-darker);
 }
 
 .btn-basic:visited {
@@ -217,12 +241,12 @@ body {
 .btn-edit {
     font-size: 1em;
     margin-top: 2rem;
-    background-color: rgb(230, 187, 0);
+    background-color: var(--yellow-primary);
     color: white;
 }
 
 .btn-edit:hover {
-    background-color: rgb(179, 146, 0);
+    background-color: var(--yellow-darker);
 }
 
 .btn-edit:visited {
@@ -232,12 +256,12 @@ body {
 .btn-delete {
     font-size: 1em;
     margin-top: 2rem;
-    background-color: rgb(228, 0, 0);
+    background-color: var(--red-primary);
     color: white;
 }
 
 .btn-delete:hover {
-    background-color: rgb(167, 0, 0);
+    background-color: var(--red-darker);
 }
 
 .btn-delete:visited {
@@ -252,12 +276,12 @@ body {
     margin-left: 2rem;
     margin-bottom: 1rem;
     padding: 0.2rem 0.5rem;
-    border-bottom: 1px solid rgb(0, 140, 255);
+    border-bottom: 1px solid var(--blue-primary);
     transition: all 0.2s;
 }
 
 .btn-simple:hover {
-    background-color: rgb(0, 140, 255);
+    background-color: var(--blue-primary);
     color: white;
 }
 
@@ -286,10 +310,10 @@ body {
 }
 
 .camping:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 20px var(--shadow-primary);
     transform: translateY(-3%);
     z-index: 10;
-    color: rgb(0, 140, 255);
+    color: var(--blue-primary);
 }
 
 .camping__image {
@@ -314,7 +338,7 @@ body {
 }
 
 .form-delete .btn-simple:hover {
-    background-color: rgb(0, 140, 255);
+    background-color: var(--blue-primary);
     color: white;
 }
 
@@ -329,7 +353,7 @@ body {
     font-size: 1em;
     padding: 1rem 2rem;
     border-radius: 1rem;
-    border: 1px solid rgb(82, 82, 82);
+    border: 1px solid var(--text-clr-main);
     margin-bottom: 1.5rem;
     transition: all 0.2s;
 }
@@ -341,8 +365,8 @@ textarea {
 
 .input__text:hover,
 .input__text:target {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgb(0, 140, 255)
+    box-shadow: 0px 0px 20px var(--shadow-primary);
+    border: 1px solid var(--blue-primary);
 
 }
 
@@ -363,7 +387,7 @@ textarea {
     height: 20rem;
     object-fit: cover;
     padding: 1rem;
-    border: 1px solid rgb(82, 82, 82);
+    border: 1px solid var(--text-clr-main);
 }
 
 .hero-details {
@@ -389,7 +413,7 @@ textarea {
 
 .comment {
     width: 70%;
-    border-bottom: 1px solid rgb(0, 140, 255);
+    border-bottom: 1px solid var(--blue-primary);
     padding: 1rem;
 }
 
@@ -420,7 +444,7 @@ textarea {
 .delete-popup {
     width: 30vw;
     margin: 0 auto;
-    background-color: rgb(201, 0, 0);
+    background-color: var(--red-darker-2);
     padding: 2rem 1rem;
     display: none;
     flex-direction: column;
@@ -428,7 +452,7 @@ textarea {
     border: 1px solid red;
     border-radius: 1rem;
     color: white;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 10px var(--shadow-primary);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -447,7 +471,7 @@ textarea {
 }
 
 .delete-em {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--shadow-secondary);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -468,7 +492,7 @@ textarea {
 .footer {
     width: 100vw;
     height: 8vh;
-    background-color: rgb(61, 61, 61);
+    background-color: var(--gray-darker);
     padding-right: 7rem;
     display: flex;
     flex-direction: column;
