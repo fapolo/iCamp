@@ -3,7 +3,8 @@ const express       = require("express"),
       passport      = require("passport"),
       LocalStrategy = require("passport-local"),
       mongoose      = require("mongoose"),
-      flash         = require("connect-flash");
+      flash         = require("connect-flash"),
+      dotenv        = require("dotenv").config();
 
 const Usuario       = require("./models/usuario");
 
@@ -13,15 +14,12 @@ const commentRoutes = require("./routes/comentarios"),
 
 const app = express();
 
-mongoose.connect("mongodb://fapolo:A030190a@ds255917.mlab.com:55917/icamp", { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
-
-// const seedDB = require("./seeds");   
-// seedDB();
 
 // ==================
 // PASSPORT CONFIG
