@@ -358,10 +358,6 @@ body {
     transition: all 0.2s;
 }
 
-.input__text--img {
-    cursor: pointer;
-}
-
 textarea {
     font-family: inherit;
     color: inherit;
