@@ -58,4 +58,4 @@ app.use(campsRoutes);
 app.use(commentRoutes);
 app.use(authRoutes);
 
-app.listen(3000, "localhost", () => { console.log("Servidor iCamp iniciado.") });
+app.listen(process.env.PORT, process.env.IP, () => { console.log("Servidor iCamp iniciado.") });
