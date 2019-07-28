@@ -1,4 +1,7 @@
 const express = require("express");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 const methodOverride = require("method-override");
 const Acampamento = require("../models/acampamento");
 const Comentario = require("../models/comentario");
@@ -7,6 +10,20 @@ const router = express.Router();
 
 router.use(methodOverride("_method"));
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./public/uploads")
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({storage: storage});
+
+
+// ==================
+// ROTAS
+// ==================
 router.get("/acampamentos", (req, res) => {
     Acampamento.find({}, (err, camps) => {
         if (err) {
@@ -20,12 +37,15 @@ router.get("/acampamentos", (req, res) => {
     })
 });
 
-router.post("/acampamentos", middleware.isLoggedIn, (req, res) => {
+router.post("/acampamentos", middleware.isLoggedIn, upload.single("img"), (req, res) => {
+    const dir = "/uploads";
+    const index = req.file.destination.indexOf(dir);
+    const imgPath = req.file.destination.slice(index) + "/" + req.file.filename;
     const name = req.body.name,
-          img = req.body.img,
           desc = req.body.desc,
+          img = imgPath,
           user = {id: req.user._id, name: req.user.name};
-    const newCamp = {name: name, img: img, desc: desc, user: user};
+    const newCamp = {name: name, desc: desc, img: img, user: user};
     Acampamento.create(newCamp, (err, newCamp) => {
         if (err) {
             console.log("ERRO AO ADICIONAR ACAMPAMENTO");
@@ -68,9 +88,13 @@ router.get("/acampamentos/:id/editar",
 router.put("/acampamentos/:id",
             middleware.isLoggedIn,
             middleware.checkCampOwnership,
+            upload.single("img"),
             (req, res) => {
+                const dir = "/uploads";
+                const index = req.file.destination.indexOf(dir);
+                const imgPath = req.file.destination.slice(index) + "/" + req.file.filename;
                 const name = req.body.name,
-                      img = req.body.img,
+                      img = imgPath,
                       desc = req.body.desc;
                 const updateCamp = {name: name, img: img, desc: desc};
                 Acampamento.findByIdAndUpdate(req.params.id, updateCamp, (err, updatedCamp) => {
@@ -98,6 +122,8 @@ router.delete("/acampamentos/:id",
                             req.flash("error", "Ocorreu um erro. Tente novamente.");
                             res.redirect("/acampamentos");
                         };
+                        const imgPath = "./public" + foundCamp.img;
+                        fs.unlink(imgPath, (err) => { if (err) { console.log(err); }});
                         foundCamp.comments.forEach((comment) => {
                             Comentario.findById(comment._id).deleteOne( (err) => {
                                 if (err) {
