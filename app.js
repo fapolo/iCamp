@@ -13,7 +13,8 @@ const commentRoutes = require("./routes/comentarios"),
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/icamp", { useNewUrlParser: true });
+mongoose.connect("mongodb://fapolo:A030190a@ds255917.mlab.com:55917/icamp", { useNewUrlParser: true });
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
